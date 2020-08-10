@@ -1,7 +1,7 @@
 from libs.publisher_api import run_query
 from datetime import date
 
-# Example request for direct sell data from Sharethrough Publisher API
+# Example request for programmatic data from Sharethrough Publisher API
 # Set this request body according to your needs
 # API docs: https://support.sharethrough.com/hc/en-us/articles/360044449471-Sharethrough-Publisher-API-Documentation
 request_body = {

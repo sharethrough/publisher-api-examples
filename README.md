@@ -24,10 +24,11 @@ Every request to the Publisher API must consist of a request body. There is an e
 
 Once you have set up your request, you need to decide if you want results in CSV format or JSON. By default this script will output results in CSV. You can instead have results in JSON format by setting the `json` variable to `True` inside the script.
 
-When you run the script, it will print results to a file named
+When you run the script, it will write to a file in the `results/` directory named
 ```bash
 <current_date>-<current_time>.<report_type>.<format>
 # examples
 20200810-131101.direct-sell.csv
 20200809-162319.programmatic.json
 ```
+If there is no `results/` directory in place, it will be created for you.
