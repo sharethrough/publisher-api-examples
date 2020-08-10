@@ -1,4 +1,6 @@
+import errno
 import requests
+import os
 from datetime import datetime
 from setup import PUB_API_URL, AUTH_TOKEN
 from libs.auth import BearerAuth
@@ -19,10 +21,19 @@ def run_query(report_type, request_body, json=False):
         exit(1)
 
 
+# print pub api results to file
 def write_result(report_type, data, json=False):
     timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
     file_type = "json" if json is True else "csv"
     filename = f"results/{timestamp}.{report_type}.{file_type}"
+
+    # put results in dir called results
+    try:
+        os.makedirs('results')
+    except OSError as e:
+        # only raise errors if its not "directory exists already"
+        if e.errno != errno.EEXIST:
+            raise
 
     f = open(filename, "w+")
     f.write(data)

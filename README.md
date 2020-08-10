@@ -12,14 +12,22 @@ Install with
 pipenv install
 ```
 
+Next, update `setup.py` such that the `AUTH_TOKEN` variable matches your authentication token for the Publisher API.
+
 ## How to use
 
-Update `setup.py` such that the `AUTH_TOKEN` variable matches your authentication token for the Publisher API.
+There are two report types: programmatic and direct sell.
+ 
+The `run_programmatic.py` and `run_direct_sell.py` files contain the basic logic for sending requests to the publisher API for each report type.
 
-The `run_direct_sell.py` and `run_programmatic.py` files contain the basic logic for sending requests to the publisher API.
+Every request to the Publisher API must consist of a request body. There is an example request body for each report type inside its relevant python script, which you can edit according to your needs. To help you, you can refer to the [documentation](https://support.sharethrough.com/hc/en-us/articles/360044449471-Sharethrough-Publisher-API-Documentation) for the exact specification.
 
-These scripts are set up to query the publisher API using the request body that you define and will print the results to a file in the `results/` directory. The file name will be the current date/time and the report type (`direct-sell` or `programmatic`, depending on which script you triggered).
+Once you have set up your request, you need to decide if you want results in CSV format or JSON. By default this script will output results in CSV. You can instead have results in JSON format by setting the `json` variable to `True` inside the script.
 
-Here you can set your request body which will determine what fields you are requesting and how your want your data grouped and sliced. For help building the correct request body for your needs, refer to the [documentation](https://support.sharethrough.com/hc/en-us/articles/360044449471-Sharethrough-Publisher-API-Documentation).
-
-By default the scripts in this git repository will return results in CSV format. It is possible to instead have results in JSON format by setting the `json` variable to `True`.
+When you run the script, it will print results to a file named
+```bash
+<current_date>-<current_time>.<report_type>.<format>
+# examples
+20200810-131101.direct-sell.csv
+20200809-162319.programmatic.json
+```
