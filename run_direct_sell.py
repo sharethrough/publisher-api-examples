@@ -9,15 +9,18 @@ request_body = {
     "endDate": date.today().strftime("%Y-%m-%d"),
     "fields": ["rendered_impressions", "impression_requests", "ctr"],
     "groupBy": ["date"],
-    "filterBy": [{
-        "operator": "EQUALS",
-        "field": "country",
-        "value": "FR"
-    },{
-        "operator": "EQUALS",
-        "field": "device_type",
-        "value": "Tablet"
-    }],
+    "filterBy": [
+        {
+            "operator": "EQUALS",
+            "field": "country",
+            "value": "FR"
+        },
+        {
+            "operator": "EQUALS",
+            "field": "device_type",
+            "value": "Tablet"
+        }
+    ],
 }
 
 # set this to True if you want your results as plain json instead of CSV
